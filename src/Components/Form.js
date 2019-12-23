@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./Form.css"
 class Form extends React.Component {
 	render() {
 		return(
@@ -10,7 +10,7 @@ class Form extends React.Component {
 					</label>
 					<label>
 						Country:
-						<input type ="text" name="country" class="city"/>
+						<input type ="text" name="country" class="country"/>
 					</label>
 					<input type ="submit" value="Submit" />
 				</form>
