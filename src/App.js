@@ -11,24 +11,35 @@ class App extends React.Component {
     this.state = {
       city: [],
       country: [],
+      temperature: [],
+      humidity: [],
+      description: []
     }
   }
-/*
-  componentDidMount() {
-    this.getWeather();
-  }
-*/
+  
   getWeather = (e) => {
     const {city, country} = this.state;
     e.preventDefault();
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}`);
-  }
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}`)
+    .then(res => res.json())
+    .then(
+      (result) => { 
+        this.setState({
+          city: result.name,
+          country: result.sys.country,
+          
+        });
+      }
+}
 
   render() {
     return (
       <div>
         <Titles/>
         <Form loadWeather = {this.getWeather}/>
+        <Weather 
+        city = {this.state.city}
+        country = {this.state.country} />
       </div>
     )
   }
