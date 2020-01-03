@@ -2,13 +2,14 @@ import React from 'react';
 import './App.css';
 import Form from './Components/Form.js';
 import  Titles from'./Components/Titles.js';
-//import Weather from './Components/Weather.js';
+import Weather from './Components/Weather.js';
 
 const Api_Key = 'e90c6bb8-bfbd-11e9-9cb5-2a2ae2dbcce4';
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      error: null,
       city: [],
       country: [],
       temperature: [],
@@ -27,9 +28,17 @@ class App extends React.Component {
         this.setState({
           city: result.name,
           country: result.sys.country,
-          
+          temperature: result.main.temp,
+          humidity: result.main.humidity,
+          description: result.weather.description,
+        });
+      },
+      (error) => {
+        this.setState({
+          error
         });
       }
+    )
 }
 
   render() {
@@ -37,9 +46,10 @@ class App extends React.Component {
       <div>
         <Titles/>
         <Form loadWeather = {this.getWeather}/>
-        <Weather 
+        {/*Weather 
+        loadWeather = {this.getWeather} />
         city = {this.state.city}
-        country = {this.state.country} />
+        country = {this.state.country} />*/}
       </div>
     )
   }
