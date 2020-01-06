@@ -2,7 +2,9 @@ import React from 'react';
 
 class Weather extends React.Component {
   render() {
-      return 
+      return (
+        <li> city: {this.props.city}</li>
+      )
   }
 }
 
