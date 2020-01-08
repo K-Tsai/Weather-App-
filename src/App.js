@@ -18,10 +18,14 @@ class App extends React.Component {
     }
   }
   
+
   getWeather = (e) => {
     const {city, country} = e.event.target;
+
+  getWeather = async (e) => {
+    const {city, country} = this.state;
     e.preventDefault();
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}`)
+    await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}`)
     .then(res => res.json())
     .then(
       (result) => { 
@@ -40,9 +44,24 @@ class App extends React.Component {
        // });
      // }
     
+        this.setState({
+          city: result.name,
+          //country: result.sys.country,
+          //temperature: result.main.temp,
+          //humidity: result.main.humidity,
+          //description: result.weather.description,
+        });
+      },
+      (error) => {
+        this.setState({
+          error
+        });
+      }
+    )
 }
 
   render() {
+    const {city, country, temperature, humidity, description} = this.state
     return (
       <div>
         <Titles/>
@@ -53,6 +72,10 @@ class App extends React.Component {
         country = {this.state.country}
         temperature = {this.state.temperature} 
         />
+        loadWeather = {this.getWeather}
+        city = {this.state.city}
+        country = {this.state.country} />
+
       </div>
     )
   }
