@@ -3,10 +3,10 @@ import React from 'react';
 class Titles extends React.Component {
     render () {
 		return (
-				<div className = "titles">
-					<h1> Weather App</h1>
-					<p> Helps you find weather conditions in cities</p>
-				</div>
+			<div className = "titles">
+				<h1> Weather App</h1>
+				<p> Helps you find weather conditions in cities</p>
+			</div>
 		)
 	}
 }
