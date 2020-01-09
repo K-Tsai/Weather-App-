@@ -2,9 +2,10 @@ import React from 'react';
 import './App.css';
 import Form from './Components/Form.js';
 import  Titles from'./Components/Titles.js';
-//import Weather from './Components/Weather.js';
+import Weather from './Components/Weather.js';
 
 const Api_Key = '39ff9f318bd59dd1bb978e51622ce4c5';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +22,7 @@ class App extends React.Component {
   }
   
   getWeather = async (e) => {
-    const {city, country} = e.event.target;
+    const {city, country} = e.target.value
     e.preventDefault();
     await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}`)
     .then(res => res.json())
@@ -31,7 +32,7 @@ class App extends React.Component {
           isLoaded: true,
           city: result.name,
           country: result.sys.country,
-          //temperature: result.main.temp,
+          temperature: result.main.temp,
           //humidity: result.main.humidity,
           //description: result.weather.description,
         });
@@ -50,12 +51,15 @@ class App extends React.Component {
     return (
       <div>
         <Titles/>
-        <Form loadWeather = {this.getWeather}/>
-        {/*<Weather 
+        <Form 
+        loadWeather = {this.getWeather}
+        onClick= {this.onClick}
+        />
+        <Weather 
         city = {this.state.city}
-        country = {this.state.country} />*/}
-        <p>{this.state.city}</p>
-        <p>{this.state.country}</p>
+        country = {this.state.country}
+        temperature = {this.state.temperature} 
+        />
       </div>
     )
   }

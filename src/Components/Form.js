@@ -6,13 +6,24 @@ class Form extends React.Component {
 			<form onSubmit = {this.props.loadWeather}>
 				<label>
 					City:
-					<input type="text" name= "city" className="city"/>
+					<input 
+					type="text" 
+					name= "city"  
+					className="city"
+					/>
 				</label>
 				<label>
 					Country:
-					<input type ="text" name="country" className="country"/>
+					<input 
+					type ="text" 
+					name ="country"   
+					className="country"
+					/>
 				</label>
-				<input type ="submit" value="Submit" />
+				<input 
+				type ="submit" 
+				value="Submit" 
+				/>
 			</form>
 		)
 	}
