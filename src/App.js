@@ -12,17 +12,18 @@ class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      city: [],
-      country: [],
-      temperature: [],
-      humidity: [],
-      description: []
+      city: undefined,
+      country: undefined,
+      temperature: undefined,
+      humidity: undefined,
+      description: undefined
     }
     this.getWeather = this.getWeather.bind(this);
   }
   
   getWeather = async (e) => {
-    const {city, country} = e.target.value
+    const city = e.target.elements.city.value;
+    const country = e.target.elements.country.value;
     e.preventDefault();
     await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}`)
     .then(res => res.json())
@@ -33,8 +34,8 @@ class App extends React.Component {
           city: result.name,
           country: result.sys.country,
           temperature: result.main.temp,
-          //humidity: result.main.humidity,
-          //description: result.weather.description,
+          humidity: result.main.humidity,
+          description: result.weather[0].description,
         });
       },
       (error) => {
@@ -49,17 +50,23 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Titles/>
-        <Form 
-        loadWeather = {this.getWeather}
-        onClick= {this.onClick}
-        />
-        <Weather 
-        city = {this.state.city}
-        country = {this.state.country}
-        temperature = {this.state.temperature} 
-        />
+      <div className= "container">
+        <header>
+          <Titles/>
+        </header>
+        <body>
+            <Form 
+            loadWeather = {this.getWeather}
+            onClick= {this.onClick}
+            />
+            <Weather 
+            city = {this.state.city}
+            country = {this.state.country}
+            temperature = {this.state.temperature} 
+            humidity = {this.state.humidity}
+            description = {this.state. description}
+            />
+        </body>
       </div>
     )
   }

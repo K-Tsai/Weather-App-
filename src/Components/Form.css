@@ -2,5 +2,11 @@
     margin-left: 5px;
 }
 
+legend {
+    display: none;
+}
 
+fieldset {
+    border: 0
+}
 
