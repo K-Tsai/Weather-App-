@@ -25,7 +25,7 @@ class App extends React.Component {
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
     e.preventDefault();
-    await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}`)
+    await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}&units=imperial`)
     .then(res => res.json())
     .then(
       (result) => { 
@@ -33,8 +33,8 @@ class App extends React.Component {
           isLoaded: true,
           city: result.name,
           country: result.sys.country,
-          temperature: result.main.temp,
-          humidity: result.main.humidity,
+          temperature: result.main.temp + "°F" ,
+          humidity: result.main.humidity + "%",
           description: result.weather[0].description,
         });
       },
