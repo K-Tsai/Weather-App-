@@ -3,13 +3,13 @@ import React from 'react';
 class Weather extends React.Component {
   render() {
     return (
-			<section className= "results">
-      		<h1> City: {this.props.city}</h1>
-					<p> country: {this.props.country}</p>
-					<p> temperature: {this.props.temperature}</p>
-					<p> humidity: {this.props.humidity}</p>
-					<p> description: {this.props.description}</p>
-			</section>
+			<div className= "results">
+      	<p className= "col"> {this.props.city}</p>
+				<p className= "col"> {this.props.country}</p>
+				<p> {this.props.temperature}</p>
+				<p> {this.props.humidity}</p>
+				<p> {this.props.description}</p>
+			</div>
     )
   }
 }

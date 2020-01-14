@@ -54,10 +54,9 @@ class App extends React.Component {
         <header>
           <Titles/>
         </header>
-        <body>
+        <main>
             <Form 
             loadWeather = {this.getWeather}
-            onClick= {this.onClick}
             />
             <Weather 
             city = {this.state.city}
@@ -66,7 +65,7 @@ class App extends React.Component {
             humidity = {this.state.humidity}
             description = {this.state. description}
             />
-        </body>
+        </main>
       </div>
     )
   }

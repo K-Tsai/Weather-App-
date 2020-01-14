@@ -1,10 +1,11 @@
 import React from 'react';
 import "./Form.css"
+
 class Form extends React.Component {
 	render() {
 		return(
 			<form onSubmit = {this.props.loadWeather}>
-				<fieldset>
+				<fieldset className= "d-flex flex-column">
 					<legend>Input Information</legend>
 					<label>
 						City:
@@ -12,7 +13,7 @@ class Form extends React.Component {
 						type="text" 
 						name= "city" 
 						value={this.props.city}
-						className="city"
+						className="form-control"
 						/>
 					</label>
 					<label>
@@ -21,7 +22,7 @@ class Form extends React.Component {
 						type ="text" 
 						name ="country"  
 						value={this.props.country} 
-						className="country"
+						className="form-control"
 						/>
 					</label>
 					<input 
