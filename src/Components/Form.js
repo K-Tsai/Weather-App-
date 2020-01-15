@@ -25,10 +25,7 @@ class Form extends React.Component {
 						className="form-control"
 						/>
 					</label>
-					<input 
-					type ="submit" 
-					value="Submit" 
-					/>
+					<button type ="submit" className="btn btn-primary" value="Submit">Get Weather</button>
 				</fieldset>
 			</form>
 		)
