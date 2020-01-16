@@ -6,11 +6,11 @@ class Weather extends React.Component {
     return (
 			<div className= "results">
 				<div className= "results1">
-      		<p className= "col"> {this.props.city}</p>
-					<p className= "col"> {this.props.country}</p>
-					<p> {this.props.temperature}</p>
-					<p> {this.props.humidity}</p>
-					<p> {this.props.description}</p>
+      		<p className= "col"><span>C:</span> {this.props.city}</p>
+					<p className= "col"> <span>C:</span> {this.props.country}</p>
+					<p> <span>T:</span> {this.props.temperature}</p>
+					<p> <span>H:</span> {this.props.humidity}</p>
+					<p> <span>D:</span>{this.props.description}</p>
 					</div>
 			</div>
     )
