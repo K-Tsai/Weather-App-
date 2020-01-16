@@ -13,12 +13,25 @@ fieldset {
 label {
     font-family: 'Alfa Slab One', cursive;
     font-size: 20px;
+    color: #17252A;
 }
 
 input.form-control {
     background-color: #FEFFFF;
     font-family: 'Lato', sans-serif !important;
     font-weight: bold;
-    color: #17252A;
 }
+
+.btn {
+    font-family: 'Lato', sans-serif !important;
+    font-weight: bold;
+    background-color: #17252A;
+    color: #FEFFFF;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+
 
