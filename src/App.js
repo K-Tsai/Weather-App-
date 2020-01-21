@@ -12,15 +12,16 @@ class App extends React.Component {
     this.state = {
       error: null,
       isLoaded: false,
-      city: undefined,
-      country: undefined,
-      temperature: undefined,
-      humidity: undefined,
-      description: undefined
+      city: "",
+      country: "",
+      temperature: "",
+      humidity: "",
+      description: "",
+      icon:"",
     }
     this.getWeather = this.getWeather.bind(this);
   }
-  
+
   getWeather = async (e) => {
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
@@ -31,11 +32,12 @@ class App extends React.Component {
       (result) => { 
         this.setState({
           isLoaded: true,
-          city: result.name,
+          city: result.name + ", ",
           country: result.sys.country,
           temperature: result.main.temp + "°F" ,
           humidity: result.main.humidity + "%",
           description: result.weather[0].description,
+          icon: result.weather[0].icon
         });
       },
       (error) => {
@@ -64,6 +66,7 @@ class App extends React.Component {
             temperature = {this.state.temperature} 
             humidity = {this.state.humidity}
             description = {this.state. description}
+            icon = {this.state.icon}
             />
         </main>
       </div>

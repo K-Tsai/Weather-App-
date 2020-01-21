@@ -1,11 +1,23 @@
 .results {
-    padding: 50px;
+    margin-bottom: 30px;
 }
 
 span {
     visibility: hidden;
+    font-size: 1px;
 }
 
+h1, p {
+    text-align:center;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height:150px;
+}
 .results {
     font-family: 'Alfa Slab One', cursive;
 }
