@@ -27,6 +27,12 @@ class App extends React.Component {
     const country = e.target.elements.country.value;
     e.preventDefault();
     await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}&units=imperial`)
+    .then(response => {
+      if(response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText)
+    })
     .then(res => res.json())
     .then(
       (result) => { 
@@ -35,16 +41,13 @@ class App extends React.Component {
           city: result.name + ", ",
           country: result.sys.country,
           temperature: result.main.temp + "°F" ,
-          humidity: result.main.humidity + "%",
+          humidity: result.main.humidity + "% Humidity",
           description: result.weather[0].description,
           icon: result.weather[0].icon
-        });
-      },
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
+        })
+      .catch(error) {
+        this.setState({error})
+      }
       }
     )
 }
