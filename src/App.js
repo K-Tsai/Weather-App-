@@ -3,6 +3,7 @@ import './App.css';
 import Form from './Components/Form.js';
 import  Titles from'./Components/Titles.js';
 import Weather from './Components/Weather.js';
+import ErrorBoundary from './Components/ErrorBoundary.js';
 
 const Api_Key = '39ff9f318bd59dd1bb978e51622ce4c5';
 
@@ -27,12 +28,6 @@ class App extends React.Component {
     const country = e.target.elements.country.value;
     e.preventDefault();
     await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}&units=imperial`)
-    .then(response => {
-      if(response.ok) {
-        return response.json();
-      }
-      throw new Error(response.statusText)
-    })
     .then(res => res.json())
     .then(
       (result) => { 
@@ -45,9 +40,6 @@ class App extends React.Component {
           description: result.weather[0].description,
           icon: result.weather[0].icon
         })
-      .catch(error) {
-        this.setState({error})
-      }
       }
     )
 }
@@ -56,21 +48,21 @@ class App extends React.Component {
   render() {
     return (
       <div className= "container rounded">
-        <header>
-          <Titles/>
-        </header>
-        <main>
-            <Form 
-            loadWeather = {this.getWeather}
-            />
-            <Weather 
-            city = {this.state.city}
-            country = {this.state.country}
-            temperature = {this.state.temperature} 
-            humidity = {this.state.humidity}
-            description = {this.state. description}
-            icon = {this.state.icon}
-            />
+          <header>
+            <Titles/>
+          </header>
+          <main>
+              <Form 
+              loadWeather = {this.getWeather}
+              />
+              <Weather 
+              city = {this.state.city}
+              country = {this.state.country}
+              temperature = {this.state.temperature} 
+              humidity = {this.state.humidity}
+              description = {this.state. description}
+              icon = {this.state.icon}
+              />
         </main>
       </div>
     )
