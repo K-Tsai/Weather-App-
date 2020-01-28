@@ -1,13 +1,14 @@
 .jumbotron {
-    background-color: #3AAFA9 !important;
+   background-color: #3AAFA9 !important
+   
 }
 
-h1 {
+.mainTitle {
     font-family: 'Alfa Slab One', cursive;
     color: #17252A;
 }
 
-h5 {
+.subTitle {
     font-family: 'Lato', sans-serif; 
     color: #FEFFFF;
     font-weight: bold

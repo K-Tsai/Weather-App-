@@ -25,7 +25,11 @@ class Form extends React.Component {
 						className="form-control"
 						/>
 					</label>
-					<button type ="submit" className="btn btn-default btn-lg" value="Submit">Get Weather</button>
+					<button 
+					type ="submit" 
+					className="btn btn-default btn-lg" 
+					value="Submit">Get Weather
+					</button>
 				</fieldset>
 			</form>
 		)

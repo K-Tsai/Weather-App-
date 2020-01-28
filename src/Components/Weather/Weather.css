@@ -7,8 +7,10 @@ span {
     font-size: 1px;
 }
 
-h1, p {
+h1, h2, p {
     text-align:center;
+    margin-bottom: 15px;
+    color: #17252A;
 }
 
 img {
@@ -16,8 +18,17 @@ img {
     margin-left: auto;
     margin-right: auto;
     height: 150px;
-    width: 150x;
+    width: 150px;
 }
+
+.error {
+margin-top: 50px;
+}
+
+p{
+    font-size:25px;
+}
+
 .results {
     font-family: 'Alfa Slab One', cursive;
 }
