@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
+      errorMessage: "",
       isLoaded: false,
       city: "",
       country: "",
@@ -27,6 +27,7 @@ class App extends React.Component {
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
     e.preventDefault();
+    if(this.state.isLoaded !== true){
     await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}&units=imperial`)
     .then(res => res.json())
     .then(
@@ -42,6 +43,11 @@ class App extends React.Component {
         })
       }
     )
+    } else {
+      this.setState({
+        errorMessage: "please enter correct values"
+      })
+    }
 }
 
 
@@ -62,7 +68,10 @@ class App extends React.Component {
               humidity = {this.state.humidity}
               description = {this.state. description}
               icon = {this.state.icon}
+              isLoaded= {this.state.isLoaded}
               />
+              { this.state.errorMessage &&
+                <h3 className="error"> { this.state.errorMessage } </h3> }
         </main>
       </div>
     )
