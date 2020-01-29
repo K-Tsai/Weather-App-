@@ -1,6 +1,8 @@
-.jumbotron {
-   background-color: #3AAFA9 !important
-   
+.titles {
+    padding-top:32px;
+    padding-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .mainTitle {

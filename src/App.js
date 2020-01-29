@@ -29,50 +29,53 @@ class App extends React.Component {
     const api_call= await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${Api_Key}&units=imperial`)
     const result = await api_call.json();
     const cod = result.cod;
-    console.log(cod)
-      if(cod === 200 && city && country){
-        this.setState({
-          city: result.name + ", ",
-          country: result.sys.country,
-          temperature: result.main.temp + "°F" ,
-          humidity: result.main.humidity + "% Humidity",
-          description: result.weather[0].description,
-          icon: result.weather[0].icon,
-          error:""
-        })
-      } else {
-        this.setState({
-          city: undefined,
-          country: undefined,
-          temperature: undefined,
-          humidity: undefined,
-          description: undefined,
-          icon: undefined,
-          error: "Please Enter Correct Values"
-        });
-      }
+    if(cod === 200 && city && country){
+      this.setState({
+        city: result.name + ", ",
+        country: result.sys.country,
+        temperature: result.main.temp + "°F" ,
+        humidity: result.main.humidity + "% Humidity",
+        description: result.weather[0].description,
+        icon: result.weather[0].icon,
+        error:""
+      })
+    } else {
+      this.setState({
+        city: undefined,
+        country: undefined,
+        temperature: undefined,
+        humidity: undefined,
+        description: undefined,
+        icon: undefined,
+        error: "Please Enter Correct Values"
+      });
+    }
   }
 
 
   render() {
     return (
       <div className= "container rounded">
-          <header>
-            <Titles/>
-          </header>
-          <main>
-              <Form 
-              loadWeather = {this.getWeather}
-              />
-              <Weather 
-              city = {this.state.city}
-              country = {this.state.country}
-              temperature = {this.state.temperature} 
-              humidity = {this.state.humidity}
-              description = {this.state. description}
-              icon = {this.state.icon}
-              error= {this.state.error}
-              />
+        <header>
+          <Titles/>
+        </header>
+        <main>
+          <div className="col">
+            <Form 
+            loadWeather = {this.getWeather}
+            />
+          </div>
+          <div className = "col">
+            <Weather 
+            city = {this.state.city}
+            country = {this.state.country}
+            temperature = {this.state.temperature} 
+            humidity = {this.state.humidity}
+            description = {this.state. description}
+            icon = {this.state.icon}
+            error= {this.state.error}
+            />
+          </div>
         </main>
       </div>
     )
