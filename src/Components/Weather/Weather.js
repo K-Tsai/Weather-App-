@@ -7,7 +7,7 @@ class Weather extends React.Component {
     return (
 			<div className= "results">
 				<div className="frontIcon">
-					<Img src={`http://openweathermap.org/img/wn/${this.props.icon}@2x.png`}/>
+					<Img src={`https://openweathermap.org/img/wn/${this.props.icon}@2x.png`}/>
 				</div>
 				<h1 className= "temperature">{this.props.temperature}</h1>
       	<p className= "location">{this.props.city}{this.props.country} </p>
